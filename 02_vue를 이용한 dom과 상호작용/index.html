@@ -26,7 +26,12 @@
             <p>Learn more <a v-bind:href="vueLink">about Vue</a></p>
 
             <!-- 메서드 사용 -->
-            <p>{{outputGoal()}}</p>
+            <!-- v-html : 실제 html을 출력하고 싶을 경우 -->
+            <p v-html="outputGoal()"></p>
+
+            <!-- 단 v-html디렉티브를 사용할 일이 많지 않고, 기본으로 설정해버리면 -->
+            <!-- 이중 중괄호에 내장된 크로스 사이트 스크립트 공격에 대한 방어 기능을 피하게 되어 보안 위협이 될 수 있다. -->
+            <!-- <p>{{outputGoal()}}</p> 사용이 더 안전하다~ -->
         </section>
     </body>
 </html>
