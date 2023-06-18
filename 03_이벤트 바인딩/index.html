@@ -18,29 +18,35 @@
         </header>
         <section id="events">
             <h2>Events in Action</h2>
-            <!-- bad code : html에 로직을 넣는 것 -->
-            <!-- <button v-on:click="counter++">Add</button> -->
-            <!-- <button v-on:click="counter--">Reduce</button> -->
-
-            <!-- 로직을 js에 넣어주자 -->
-            <!-- 이벤트와 메서드를 사용하여 -->
-            <!-- add(), add 둘 다 가능 -->
             <button v-on:click="add(5)">Add 5</button>
-            <button v-on:click="reduce(5)">Reduce 5</button>
+            <!-- .right: 이벤트 수식어, 마우스 오른쪽 클릭에만 반응 -->
+            <button v-on:click.right="reduce(5)">Reduce 5</button>
             <p>Result: {{counter}}</p>
+            <!-- 이벤트 수식어 : 출력되는 이름이 업데이트 되기 위해선 enter 조건 -->
+            <input
+                type="text"
+                v-on:input="setName($event, '입니다.')"
+                v-on:keyup.enter="confirmInput"
+            />
+            <p>Your name: {{confirmedName}}</p>
 
-            <!-- input의 입력값이 name이 되게 하는 방법 -->
-            <!-- input이벤트 발생할 때 코드(메서드)가 실행 -->
-            <!-- <input type="text" v-on:input="setName" /> -->
+            <!-- 방법1. v-on:submit="submitForm" -->
+            <!-- <form v-on:submit="submitForm"> -->
+            <!-- <input type="text" /> -->
+            <!-- button click할 때마다 페이지 새로고침되면서 모든 데이터를 잃게 됨 -->
+            <!-- 만약 counter가 있는 상태에서 Sign up을 누르면 사라짐 -->
+            <!-- 요청을 계속 보내기 때문 -->
+            <!-- 이런 브라우저의 기본값을 방지하고, 수동으로 vue를 사용하여 js로 처리 -->
+            <!-- 즉, 브라우저가 요청을 자동으로 전송하는 기본값을 방지 -->
+            <!-- <button>Sign Up</button> -->
+            <!-- </form> -->
 
-            <!-- 만약 다른 인수를 전달할 경우 -->
-            <!-- $event를 사용해야한다. -->
-            <!-- 예약된 이름으로 Vue가 제공하는 변수 -->
-            <!-- 브라우저를 통해 자동으로 얻는 기본 내장 이벤트 객체에 대한 엑세스를 제공 -->
-            <!-- 단, 여기서 문제 value값이 없을 때도, '입니다'가 출력 -->
-            <input type="text" v-on:input="setName($event, '입니다.')" />
-
-            <p>Your name: {{name}}</p>
+            <!-- 방법2.vue의 이벤트 수식어 사용, 더좋음 -->
+            <!-- .prevent -->
+            <form v-on:submit.prevent="submitForm">
+                <input type="text" />
+                <button>Sign Up</button>
+            </form>
         </section>
     </body>
 </html>
