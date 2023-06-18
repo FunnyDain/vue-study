@@ -19,30 +19,19 @@
         <section id="events">
             <h2>Events in Action</h2>
             <button v-on:click="add(5)">Add 5</button>
-            <!-- .right: 이벤트 수식어, 마우스 오른쪽 클릭에만 반응 -->
             <button v-on:click.right="reduce(5)">Reduce 5</button>
+
+            <!-- Starting Counter의 값을 변경하고 싶지 않을 경우 -->
+            <!-- v-once : vue가 모든 동적 데이터 바인딩을 한 번만 평가하도록 함-->
+            <!-- 그 이후론 업데이트 하지 않는다. -->
+            <p v-once>Starting Counter: {{counter}}</p>
             <p>Result: {{counter}}</p>
-            <!-- 이벤트 수식어 : 출력되는 이름이 업데이트 되기 위해선 enter 조건 -->
             <input
                 type="text"
                 v-on:input="setName($event, '입니다.')"
                 v-on:keyup.enter="confirmInput"
             />
             <p>Your name: {{confirmedName}}</p>
-
-            <!-- 방법1. v-on:submit="submitForm" -->
-            <!-- <form v-on:submit="submitForm"> -->
-            <!-- <input type="text" /> -->
-            <!-- button click할 때마다 페이지 새로고침되면서 모든 데이터를 잃게 됨 -->
-            <!-- 만약 counter가 있는 상태에서 Sign up을 누르면 사라짐 -->
-            <!-- 요청을 계속 보내기 때문 -->
-            <!-- 이런 브라우저의 기본값을 방지하고, 수동으로 vue를 사용하여 js로 처리 -->
-            <!-- 즉, 브라우저가 요청을 자동으로 전송하는 기본값을 방지 -->
-            <!-- <button>Sign Up</button> -->
-            <!-- </form> -->
-
-            <!-- 방법2.vue의 이벤트 수식어 사용, 더좋음 -->
-            <!-- .prevent -->
             <form v-on:submit.prevent="submitForm">
                 <input type="text" />
                 <button>Sign Up</button>

@@ -7,10 +7,7 @@ const app = Vue.createApp({
         };
     },
     methods: {
-        // 방법1.
         submitForm(event) {
-            // 브라우저의 기본값을 방지
-            // event.preventDefault();
             alert('Submitted');
         },
         setName(event, lastName) {
