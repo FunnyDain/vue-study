@@ -25,8 +25,8 @@
             <!-- 로직을 js에 넣어주자 -->
             <!-- 이벤트와 메서드를 사용하여 -->
             <!-- add(), add 둘 다 가능 -->
-            <button v-on:click="add">Add</button>
-            <button v-on:click="reduce">Reduce</button>
+            <button v-on:click="add(5)">Add 5</button>
+            <button v-on:click="reduce(5)">Reduce 5</button>
             <p>Result: {{counter}}</p>
         </section>
     </body>
