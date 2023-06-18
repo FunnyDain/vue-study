@@ -19,6 +19,12 @@
         <section id="user-goal">
             <h2>My Course Goal</h2>
             <p>{{courseGoal}}</p>
+            <!-- <p>Learn more <a href="{{vueLink}}">about Vue</a></p> -->
+            <!-- 이렇게 사용할 수 없는 것이, 이중 중괄호 구문은 여닫는 html태그에서만 사용가능 -->
+
+            <!-- 이럴 경우, vue바인딩 구문을 사용 -->
+            <!-- 디렉티브 v-bind는 vue에게 바인딩을 지시, 즉 어떤 html요소의 속성값을 동적으로 설정하게 함 -->
+            <p>Learn more <a v-bind:href="vueLink">about Vue</a></p>
         </section>
     </body>
 </html>

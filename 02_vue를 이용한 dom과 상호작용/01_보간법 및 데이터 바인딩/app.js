@@ -7,6 +7,7 @@ const app = Vue.createApp({
         //항상 객체를 반환한다.
         return {
             courseGoal: 'Finish the course and learn Vue!',
+            vueLink: 'https://vuejs.org',
         };
     },
 });
