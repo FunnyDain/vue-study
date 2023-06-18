@@ -6,7 +6,8 @@ const app = Vue.createApp({
     data() {
         //항상 객체를 반환한다.
         return {
-            courseGoal: 'Finish the course and learn Vue!',
+            courseGoalA: 'Finish the course and learn Vue!',
+            courseGoalB: 'Master Vue and build amazing apps!!',
             vueLink: 'https://vuejs.org',
         };
     },
@@ -15,9 +16,12 @@ const app = Vue.createApp({
         outputGoal: function () {
             const randomNumber = Math.random();
             if (randomNumber < 0.5) {
-                return 'Learn Vue!';
+                // return courseGoalA하면 안됌
+                // this키워드는 vue덕분에 data가 반환하는 객체를 참조하는 것
+                // 이 객체는 createApp가 관리하는 모든 영역에서 사용 가능
+                return this.courseGoalA;
             } else {
-                return 'Master Vue!';
+                return this.courseGoalB;
             }
         },
     },
