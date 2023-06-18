@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vue Basics</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://unpkg.com/vue@next" defer></script>
+        <script src="app.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1>Vue Events</h1>
+        </header>
+        <section id="events">
+            <h2>Events in Action</h2>
+            <!-- button에 이벤트 리스너를 적용하는 방법 -->
+            <!-- v-on: 수신하려는 이벤트 -->
+            <!-- vue의 기능: 화면 뒤에서 카운터를 업데이트 해주고, 카운터의 변화를 감지하고 -->
+            <!-- 실제 렌더링하는 페이지에서 해당 부분을 업데이트 -->
+            <button v-on:click="counter++">Add</button>
+            <button v-on:click="counter--">Reduce</button>
+            <p>Result: {{counter}}</p>
+        </section>
+    </body>
+</html>
