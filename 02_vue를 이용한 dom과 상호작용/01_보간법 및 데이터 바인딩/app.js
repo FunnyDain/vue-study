@@ -10,6 +10,16 @@ const app = Vue.createApp({
             vueLink: 'https://vuejs.org',
         };
     },
+    // methods는 메서드 및 함수로 만들어진 객체를 가진다.
+    methods: {
+        outputGoal: function () {
+            const randomNumber = Math.random();
+            if (randomNumber < 0.5) {
+                return 'Learn Vue!';
+            } else {
+                return 'Master Vue!';
+            }
+        },
+    },
 });
-
 app.mount('#user-goal');
