@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vue Basics</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://unpkg.com/vue@next" defer></script>
+        <script src="app.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1>Vue Events</h1>
+        </header>
+        <section id="events">
+            <h2>Events in Action</h2>
+            <button v-on:click="add(5)">Add 5</button>
+            <button v-on:click.right="reduce(5)">Reduce 5</button>
+            <p v-once>Starting Counter: {{counter}}</p>
+            <p>Result: {{counter}}</p>
+
+            <!-- v-on:input="" : 입력을 수신 -->
+            <!-- v-bind:value="name" : 저장된 값을 value 프로퍼티에 바인딩하여 입력요소에 전달  -->
+            <!-- 이 패턴을 너무 자주 쓰이기 때문에 vue에서 제공하는 축약어가 있다. -->
+            <!-- 바로 v-model! -->
+            <!-- <input
+                type="text"
+                v-bind:value="name"
+                v-on:input="setName($event, '입니다.')"
+                v-on:keyup.enter="confirmInput"
+            /> -->
+            <input type="text" v-model="name" />
+            <!-- v-model="" 쌍따옴표 안에는 이 디렉티브가 관리할 데이터 프로퍼티만 넣어주면 됌 -->
+            <!-- input이벤트에서 업데이트, name프로퍼티 값은 입력 요소로 다시 전송 -->
+            <!-- v-model은 v-bind:value와 v-on:input의 축약어 -->
+            <!-- 양방향으로 통신하는 양방향 바인딩 -->
+
+            <!-- 이름의 입력을 삭제하는 버튼 -->
+            <button v-on:click="resetInput">Reset Input</button>
+
+            <p>Your name: {{name}}</p>
+            <form v-on:submit.prevent="submitForm">
+                <input type="text" />
+                <button>Sign Up</button>
+            </form>
+        </section>
+    </body>
+</html>
