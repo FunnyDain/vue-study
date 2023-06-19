@@ -23,26 +23,10 @@
             <p v-once>Starting Counter: {{counter}}</p>
             <p>Result: {{counter}}</p>
 
-            <!-- v-on:input="" : 입력을 수신 -->
-            <!-- v-bind:value="name" : 저장된 값을 value 프로퍼티에 바인딩하여 입력요소에 전달  -->
-            <!-- 이 패턴을 너무 자주 쓰이기 때문에 vue에서 제공하는 축약어가 있다. -->
-            <!-- 바로 v-model! -->
-            <!-- <input
-                type="text"
-                v-bind:value="name"
-                v-on:input="setName($event, '입니다.')"
-                v-on:keyup.enter="confirmInput"
-            /> -->
             <input type="text" v-model="name" />
-            <!-- v-model="" 쌍따옴표 안에는 이 디렉티브가 관리할 데이터 프로퍼티만 넣어주면 됌 -->
-            <!-- input이벤트에서 업데이트, name프로퍼티 값은 입력 요소로 다시 전송 -->
-            <!-- v-model은 v-bind:value와 v-on:input의 축약어 -->
-            <!-- 양방향으로 통신하는 양방향 바인딩 -->
-
-            <!-- 이름의 입력을 삭제하는 버튼 -->
             <button v-on:click="resetInput">Reset Input</button>
 
-            <p>Your name: {{name}}</p>
+            <p>Your name: {{outputFullname()}}</p>
             <form v-on:submit.prevent="submitForm">
                 <input type="text" />
                 <button>Sign Up</button>
