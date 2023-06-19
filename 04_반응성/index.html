@@ -17,25 +17,24 @@
             <h1>Vue Events</h1>
         </header>
         <section id="events">
+            <!-- v-on과 v-bind는 아주 흔하기에 축약어가 있다. -->
+
             <h2>Events in Action</h2>
-            <button v-on:click="add(5)">Add 5</button>
-            <button v-on:click.right="reduce(5)">Reduce 5</button>
+            <!-- <button v-on:click="add(5)">Add 5</button> -->
+            <button @click="add(5)">Add 5</button>
+            <!-- <button v-on:click.right="reduce(5)">Reduce 5</button> -->
+            <button @click.right="reduce(5)">Reduce 5</button>
             <p v-once>Starting Counter: {{counter}}</p>
             <p>Result: {{counter}}</p>
 
-            <!-- ** 입력할 것이 두개일 때 -->
-            <!-- name이나 lastName이 변경될 때마다 fullName업데이트 -->
             <input type="text" v-model="name" />
             <input type="text" v-model="lastName" />
-            <button v-on:click="resetInput">Reset Input</button>
+            <!-- <button v-on:click="resetInput">Reset Input</button> -->
+            <button @click="resetInput">Reset Input</button>
 
-            <!-- vue에 내장된 또 다른 반응성 기능 : 감시자(watcher) -->
-            <!-- 감시자는 기본적으로 의존성 중 하나가 변경될 때 vue에 실행하도록 지시할 수 있는 함수 -->
-            <!-- 연산 프로퍼티 대신 감시자 사용 가능 -->
-            <!-- 하지만 대안으로 사용하기엔 연산 프로퍼티를 사용하는 것이 더 쉬움 -->
-            <!-- **연산 프로퍼티는 하나 이상의 의존성을 사용할 때 발생 -->
-            <!-- 그럼 watch는 왜 있을까? -->
-            <!-- counter가 50을 초과하면 재설정한다고 가정해보자 -->
+            <!-- v-bind:value처럼 v-bind를 생략하고 :value만 남겨두기 -->
+            <!-- 'v-bind:속성명'의 축약어로 콜론(:)과 속성명을 작성하면 됌 -->
+
             <p>Your name: {{fullname}}</p>
             <form v-on:submit.prevent="submitForm">
                 <input type="text" />
