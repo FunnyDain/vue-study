@@ -23,9 +23,27 @@
             <p v-if="goals.length === 0">
                 No goals have been added yet - please start adding some!
             </p>
+            <!-- 버그 -->
+            <!-- 목표를 세우고, 첫번째 목표의 input 무엇가를 입력후 클릭하면-->
+            <!-- 첫번째 목표는 사라지고 두번째 목표에 첫번째에서 입력한 무언가가 input창에 뜬다.-->
+            <!-- ** vue는 성능 최적화를 위해 동적으로 된 부분만 리렌더링되기 때문 -->
+            <!-- vue가 요소를 재사용해서 생긴 문제, 가끔은 요소를 구분해야하는 경우가 생김 -->
+            <!-- 해결방법 -->
+            <!-- 인덱스를 사용하여 각각의 목표를 고유하게 식별하는 방법 -->
+            <!-- key는 출력하는 모든 항목에 대해 고유 식별 기준으로 작용 -->
+            <!-- 대부분의 경우 db의 고유 id를 key로 둠 -->
+            <!-- Vue가 두 dom 요소의 차이를 구별할 수 있게 됌 -->
             <ul v-else>
-                <li v-for="(goal, index) in goals" @click="removeGoals(index)">
-                    {{goal}} - {{index}}
+                <li
+                    v-for="(goal, index) in goals"
+                    :key="goal"
+                    @click="removeGoals(index)"
+                >
+                    <p>{{goal}} - {{index}}</p>
+                    <!-- ** 이부분만 리렌더링 -->
+                    <!-- 현재 클릭하면 li가 삭제되기 때문에 추가한 클릭 리스너에 stop수식어를 붙여 삭제를 막을 수 있다. -->
+                    <input type="text" @click.stop />
+                    <!-- ** 이부분은 리렌더링 되지 x -->
                 </li>
             </ul>
         </section>
