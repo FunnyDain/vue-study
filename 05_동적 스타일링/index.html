@@ -24,9 +24,9 @@
                 @click="boxSelected('A')"
                 :class="boxAClasses"
             ></div>
+            <!-- 여러 클래스를 배열로 전달가능 -->
             <div
-                class="demo"
-                :class="{active: boxBSelected}"
+                :class="['demo',{active: boxBSelected}]"
                 @click="boxSelected('B')"
             ></div>
             <div
