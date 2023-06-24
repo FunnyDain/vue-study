@@ -24,19 +24,9 @@
                 No goals have been added yet - please start adding some!
             </p>
             <ul v-else>
-                <!-- 반복문으로 데이터 목록 렌더링 -->
-                <!-- index사용 -->
-                <li v-for="(goal, index) in goals">{{goal}} - {{index}}</li>
-            </ul>
-            <!-- 객체 반복문 -->
-            <ul>
-                <li v-for="(value, key, index) in {name:'Dain', age:28}">
-                    {{key}} : {{value}} - {{index}}
+                <li v-for="(goal, index) in goals" @click="removeGoals(index)">
+                    {{goal}} - {{index}}
                 </li>
-            </ul>
-            <!-- 숫자 범위 반복문 -->
-            <ul>
-                <li v-for="num in 10">{{num}}</li>
             </ul>
         </section>
     </body>
