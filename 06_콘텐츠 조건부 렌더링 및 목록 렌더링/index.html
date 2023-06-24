@@ -20,11 +20,17 @@
             <h2>My course goals</h2>
             <input type="text" v-model="enteredGoalValue" />
             <button @click="addGoals">Add Goal</button>
-            <p v-if="goals.length === 0">
+            <!-- v-if대신 v-show사용 가능 -->
+            <!--독립적으로 사용되어 v-show를 여러번 사용해야함(v-if, v-else와 달리) -->
+            <!-- v-if는 실제로 DOM에서 요소를 제거하고 추가한다. 즉, DOM의 일부가 되는 요소가 무엇인지를 결정-->
+            <!-- 반면, v-show는 display:none처럼 css를 통해 항목을 숨기거나 표시 -->
+            <!-- css로 항목을 표시하고 숨기면 매번 요소를 추가 및 삭제하는 것보다 성능이 ㄱㅊ -->
+            <!-- 반면 dom에 당장 필요치 않은 요소가 많이 있다면 이 방법은 이상적이지 않음 -->
+            <!-- 일반적으로 v-if를 사용하고 가시성 상태가 자주 바뀌는 경우은 v-show를 사용하자(ex)toggle) -->
+            <p v-show="goals.length === 0">
                 No goals have been added yet - please start adding some!
             </p>
-            <!-- <ul v-else-if="goals.length > 0"> -->
-            <ul v-else>
+            <ul v-show="goals.length > 0">
                 <li>Goal</li>
             </ul>
         </section>
