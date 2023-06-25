@@ -34,9 +34,39 @@ const app = Vue.createApp({
             this.message = this.$refs.userText.value;
         },
     },
+    beforeCreate() {
+        console.log('beforeCreate()');
+        // 서버에 http 요청을 전송하거나 타이머를 설정하는 등
+    },
+    created() {
+        console.log('created()');
+    },
+    beforeMount() {
+        console.log('beforeMount()');
+    },
+    mounted() {
+        console.log('mounted()'); // vue앱이 화면에 마운트된 상태이기 때문에 source에서 찍고 새로고침을 해보면 브라우저에 내용이 보이기 시작
+    },
+    beforeUpdate() {
+        console.log('beforeUpdate()');
+    },
+    updated() {
+        console.log('updated()'); // 화면에 변경된 것이 보임
+    },
+    beforeUnmount() {
+        console.log('beforeUnmount()');
+    },
+    unmounted() {
+        console.log('unmounted()');
+    },
 });
 
 app.mount('#app');
+
+// 3초 후에 mount해제
+setTimeout(() => {
+    app.unmount();
+}, 3000);
 
 // 프록시란?
 const data = {
