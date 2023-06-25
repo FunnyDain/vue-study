@@ -52,3 +52,12 @@ proxy.message = 'Hello!!!!!!!!!!!!!';
 console.log(proxy.longMessage); //message설정으로 longMessage가 업데이트
 
 //=> 이런 반응형 작업을 vue가 내부적으로 함
+
+const app2 = Vue.createApp({
+    data() {
+        return {
+            favoriteMeal: 'Meat',
+        };
+    },
+});
+app2.mount('#app2');
