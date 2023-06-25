@@ -83,3 +83,19 @@ const app2 = Vue.createApp({
     },
 });
 app2.mount('#app2');
+
+// vue instance 생명주기
+// 1. createApp : 앱 생성, html코드, 즉 dom에 mount메서드로 마운트해줌
+// 2. beforecreate() : 앱이 완전히 초기화되기 이전에 호출
+// 3. created() : 시작된 이후 호출, 이 시점까지는 화면에 표시되는 것이 아무것도 x
+// 4. Compile template : 모든 동적 플레이스홀더와 보간 등이 제거되고 사용자에게 표시될 구체적 값으로 대체되는 단계
+// 5. beforeMount() : vue가 화면에 무엇가 표시되기 직전 단계
+// 6. mounted() : 화면에 뭔가 나타나기 시작, vue앱이 초기화되고 템플릿도 컴파일을 마침
+// vue가 화면에 표시할 대상을 인지하고 브라우저에 지시 사항을 넘겨 브라우저는 이에 따라 모든 컨텐츠가 있는 html요소를 추가
+// 7. Mounted Vue instance
+// 8. Data Changed :  vue앱에서 데이터에 대한 변경 사항이 발생시
+// 9. beforeUpdate() : vue가 앱 내에서 업데이트를 완전히 처리하지 않았을 때에 대한 단계
+// 10. updated() : 해당 처리가 완료되었을 때에 대한 단계
+// 11. instance Unmounted : 가끔 vue 앱이 instance Unmounted 마운팅 해제되는 경우도 있다. 그럴 경우
+// 12. beforeUnmount() : 콘텐츠 삭제 직전에 실행
+// 13. unmounted() : 콘텐츠 삭제 후 실행
