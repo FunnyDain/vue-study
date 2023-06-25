@@ -1,3 +1,6 @@
+// vue앱을 html 코드의 dom내 특정 위치에 마운트할 때면
+// 해당 html코드 부분을 vue앱의 템플릿으로 지정하게 됨
+
 const app = Vue.createApp({
     data() {
         // data에 대해 vue가 하는 작업 중 가장 핵심적인 일은 data객체를 반응형 data객체로 바꾸는 일
@@ -54,6 +57,11 @@ console.log(proxy.longMessage); //message설정으로 longMessage가 업데이�
 //=> 이런 반응형 작업을 vue가 내부적으로 함
 
 const app2 = Vue.createApp({
+    // vue앱에 템플릿을 추가할 때
+    // 앱 구성 객체에 template옵션 사용 가능
+    template: `
+  <p>{{favoriteMeal}}</p>
+  `,
     data() {
         return {
             favoriteMeal: 'Meat',

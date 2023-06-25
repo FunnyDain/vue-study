@@ -16,16 +16,18 @@
         <header>
             <h1>Vue Behind The Scenes</h1>
         </header>
+        <!-- 1. 첫번째 vue앱의 템플릿 -->
         <section id="app">
             <h2>How Vue Works</h2>
             <input type="text" @input="saveInput" />
             <button @click="setText">Set Text</button>
             <p>{{ message }}</p>
         </section>
+        <!-- 2. 두번째 vue앱의 템플릿 -->
         <section id="app2">
             <!-- <p>{{message}}</p> -->
             <!-- 첫 번째 app의 프로퍼티는 출력되지 않음 -->
-            <p>{{favoriteMeal}}</p>
+            <!-- <p>{{favoriteMeal}}</p> 이 부분 잘라내어 template 문자열로 추가-->
         </section>
     </body>
 </html>
