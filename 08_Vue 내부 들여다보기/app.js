@@ -17,7 +17,21 @@ const app = Vue.createApp({
             this.currentUserInput = event.target.value;
         },
         setText() {
-            this.message = this.currentUserInput;
+            // this.message = this.currentUserInput;
+            // vue가 지원하는 모든 프로퍼티는 $로 시작
+            // 이렇게 하면 해당 input요소의 dom 객체를 가리키는 것이 되고,
+            // dom 요소에 액세스할 때, 순수 js에서도 사용할 수 있는 js객체가 됨
+
+            console.log(this.$refs.userText); //<input type="text">로 전체 input요소가 찍힘
+            // this.message = this.$refs.userText;
+
+            console.dir(this.$refs.userText); //출력한 객체는 event.target을 통해 액세스한 것과 동일한 객체
+            // 찍어보면 value프로퍼티에도 액세스 가능
+            // setText가 실행되었을 때만 이루어지는 작업
+
+            // 이전과 같이 잘 작동
+            // 이제 모든 키 입력을 출력하는 것이 아니라 ref 기능을 통해 필요할 때만 추출해서 쓸 수 있게 됨
+            this.message = this.$refs.userText.value;
         },
     },
 });
@@ -60,7 +74,7 @@ const app2 = Vue.createApp({
     // vue앱에 템플릿을 추가할 때
     // 앱 구성 객체에 template옵션 사용 가능
     template: `
-  <p>{{favoriteMeal}}</p>
+      <p>{{favoriteMeal}}</p>
   `,
     data() {
         return {
